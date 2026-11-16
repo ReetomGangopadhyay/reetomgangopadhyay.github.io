@@ -1,0 +1,23 @@
+---
+import type { projects } from '../data/projects';
+interface Props { project: (typeof projects)[number] }
+const { project } = Astro.props;
+---
+<article id={project.id} class="entry">
+  <p class="meta">{project.meta}</p>
+  <h3>{project.title}</h3>
+  {project.subtitle && <p class="subtitle">{project.subtitle}</p>}
+  {project.paragraphs.map(text => <p>{text}</p>)}
+  {project.links && (
+    <ul class="project-links">
+      {project.links.map(link => (
+        <li><a class="textlink" href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a></li>
+      ))}
+    </ul>
+  )}
+</article>
+
+<style>
+  .project-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  .project-links a { text-decoration: underline; text-underline-offset: 3px; }
+</style>

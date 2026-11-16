@@ -1,0 +1,6 @@
+---
+import type { Recording } from '../data/music';
+interface Props { recording:Recording }
+const {recording:r}=Astro.props;
+---
+<article class="paper"><h3>{r.title}</h3><p>{[r.composer,r.date,r.location].filter(Boolean).join(' · ')}</p>{r.media.type==='youtube'?<iframe loading="lazy" title={r.composer+' — '+r.title} src={'https://www.youtube-nocookie.com/embed/'+encodeURIComponent(r.media.source)} allowfullscreen></iframe>:<audio aria-label={r.title} controls preload="none" src={r.media.source}/>}</article>

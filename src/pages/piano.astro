@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import Intro from '../components/PageIntro.astro';
+import Entry from '../components/RecordingEntry.astro';
+import { repertoire } from '../data/repertoire';
+import { recordings, performances } from '../data/music';
+---
+<Layout title="Piano — reetom" description="My classical piano training, current repertoire, and practice and performance recordings.">
+  <div class="piano profile">
+    <Intro title="Piano">
+      <p>I started playing piano before I turned three. I still spend a lot of time studying music as well as playing it.</p>
+      <p>I often find myself at the piano with music by Chopin, Liszt, Brahms, Schumann, and Mendelssohn. Much of my repertoire comes from the Romantic era. Lately I’ve been particularly interested in Sergei Bortkiewicz and Carlos Guastavino.</p>
+    </Intro>
+
+    <section id="training" class="entry">
+      <h2>Training</h2>
+      <article class="paper">
+        <p class="meta">2015–2022</p>
+        <h3>New England Conservatory Preparatory School</h3>
+        <p>I studied with Marilyn Roth, completed coursework, and performed frequently. </p>
+      </article>
+      <article class="paper">
+        <p class="meta">2022–2026</p>
+        <h3>Boston University</h3>
+        <p>I studied with Victor Cayres while completing coursework through the School of Music.</p>
+      </article>
+    </section>
+
+    <section id="recordings" class="entry">
+      <h2>Recordings</h2>
+      <p>I maintain a piano practice and performance page where I post periodically as <a href="https://www.instagram.com/reetompiano/" target="_blank" rel="noopener noreferrer">@reetompiano</a>.</p>
+      {recordings.map(recording => <Entry {recording} />)}
+      {performances.map(performance => (
+        <article class="paper">
+          <h3>{performance.title}</h3>
+          <p>{performance.date} · {performance.location}</p>
+          {performance.program && <a href={performance.program} target="_blank" rel="noopener noreferrer">Recital program</a>}
+        </article>
+      ))}
+    </section>
+
+    <section id="selected-repertoire" class="entry">
+      <h2>Selected works</h2>
+      <p>* Currently studying</p>
+      {repertoire.map(({composer, works}) => (
+        <div class="composer">
+          <h4>{composer}</h4>
+          <ul>{works.map(work => <li>{work}</li>)}</ul>
+        </div>
+      ))}
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .piano { padding-bottom: 32px; }
+  .piano .entry { max-width: none; }
+  #training { padding-top: 30px; }
+  #selected-repertoire > h3 { margin-top: 26px; }
+  .study-list { margin-top: 10px; }
+  .study-list li + li, .composer li + li { margin-top: 5px; }
+  .study-list strong { font-weight: 550; }
+  .composer h4 { font: 400 22px/1.25 var(--serif); }
+</style>

@@ -1,0 +1,21 @@
+---
+import Icon from './Icon.astro';
+const routes=['Home','Research','Publications','Projects','Piano'];
+const current=Astro.url.pathname.replace(/\/$/,'');
+---
+<header><div class="wrap head"><a class="brand" href="/">reetom</a>
+<nav id="navigation" aria-label="Main navigation">{routes.map((name)=>{const path=name==='Home'?'':'/'+name.toLowerCase();return <a href={path+'/'} aria-current={path===current?'page':undefined}>{name}</a>})}</nav>
+<div class="controls"><button id="theme" aria-label="Switch color theme"><span class="sun"><Icon name="sun"/></span><span class="moon"><Icon name="moon"/></span></button><button id="menu" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation"><Icon name="menu"/></button></div></div></header>
+<script>
+const nav=document.querySelector<HTMLElement>('#navigation')!;
+const menu=document.querySelector<HTMLButtonElement>('#menu')!;
+function toggleMenu(open:boolean){nav.classList.toggle('open',open);menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close navigation':'Open navigation')}
+menu.onclick=()=>toggleMenu(!nav.classList.contains('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape' && nav.classList.contains('open')){toggleMenu(false);menu.focus()}});
+const theme=document.querySelector<HTMLButtonElement>('#theme')!;
+const system=matchMedia('(prefers-color-scheme: dark)');
+function updateLabel(){theme.setAttribute('aria-label','Switch to '+(document.documentElement.dataset.theme==='dark'?'light':'dark')+' mode')}
+theme.onclick=()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem('theme',next)}catch{}updateLabel()};
+system.addEventListener('change',()=>{try{if(localStorage.getItem('theme'))return}catch{}document.documentElement.dataset.theme=system.matches?'dark':'light';updateLabel()});
+updateLabel();
+</script>

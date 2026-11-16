@@ -1,0 +1,4 @@
+---
+import Icon from './Icon.astro';
+---
+<footer><div class="wrap foot"><span>© {new Date().getFullYear()} reetom</span><div>{[['GitHub','https://github.com/ReetomGangopadhyay'],['LinkedIn','https://linkedin.com/in/reetom'],['ORCID','https://orcid.org/0009-0003-8948-6309']].map(([name,url])=><a href={url} target="_blank" rel="noopener noreferrer">{name}<Icon name="up" size={12}/></a>)}</div></div></footer>

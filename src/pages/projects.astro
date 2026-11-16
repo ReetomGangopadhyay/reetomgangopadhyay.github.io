@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import Intro from '../components/PageIntro.astro';
+import Entry from '../components/ProjectEntry.astro';
+import { projects } from '../data/projects';
+
+const categories = [
+  { id: 'research', title: 'Research' },
+  { id: 'software', title: 'AI Systems & Software' },
+  { id: 'coursework', title: 'Applied Machine Learning & Statistics' },
+];
+---
+<Layout title="Projects — reetom" description="Research, software, and coursework in statistics, deep learning, and scientific computing.">
+  <Intro title="Projects">
+    <p>A selection of research projects, experiments, and software I've worked on. Some are finished, while others are still being developed.</p>
+  </Intro>
+  <div class="page-grid">
+    <aside aria-label="Project categories">
+      {categories.map(category => <a href={'#' + category.id}>{category.title}</a>)}
+    </aside>
+    <div id="project-list">
+      {categories.map(category => (
+        <section id={category.id}>
+          <h2>{category.title}</h2>
+          {projects.filter(project => project.category === category.title).map(project => <Entry {project} />)}
+        </section>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  section > h2 { margin-bottom: 24px; }
+  section + section { border-top: 1px solid var(--line); padding-top: 32px; }
+</style>

@@ -1,0 +1,7 @@
+---
+import type { Publication } from '../data/publications';
+import Icon from './Icon.astro';
+interface Props { paper:Publication }
+const {paper:p}=Astro.props;
+---
+<article class="paper"><h3>{p.title}</h3><p>{p.authors}</p><p class="venue">{p.venue} {p.note}</p>{p.doi&&<a class="textlink" href={p.doi} target="_blank" rel="noopener noreferrer">DOI <Icon name="up" size={14}/></a>}{p.bibtex&&<a class="textlink" href={p.bibtex} download>BibTeX</a>}</article>
