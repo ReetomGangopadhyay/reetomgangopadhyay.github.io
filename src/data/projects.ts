@@ -62,9 +62,9 @@ export const projects = [
     "category": "AI Systems & Software",
     "title": "regimemix",
     "subtitle": "",
-    "meta": "R Package · In Progress",
+    "meta": "R Package · Submitted to CRAN",
     "paragraphs": [
-      "Developing an R package for Bayesian nonparametric regime identification and retrospective segmentation of sequential data."
+      "Developed an R package for Bayesian nonparametric regime identification and retrospective segmentation of sequential data. Submitted to CRAN for review."
     ]
   },
   {
@@ -79,14 +79,14 @@ export const projects = [
         "href": "https://dl.acm.org/doi/10.1145/3785462.3815885"
       }
     ],
-    "category": "AI Systems & Software",
+    "category": "Research",
     "title": "defcon",
     "subtitle": "",
-    "meta": "HPC Reproducibility / Python Package · In Progress",
+    "meta": "HPC Reproducibility / Python Package · Full Release in Progress",
     "paragraphs": [
       "Developed a workflow that captures dependencies from HPC batch scripts and generates editable Singularity/Apptainer container definitions.",
       "The system supports reproducible scientific computing and has been validated on multiple programming languages and GPU workloads.",
-      "Python package deployment is in progress."
+      "Preparing the Python package for a full release."
     ]
   },
   {
@@ -127,6 +127,28 @@ export const projects = [
     "meta": "HPC Software Quality Assurance",
     "paragraphs": [
       "Developed a Python tool for validating HPC software module installations, including environment configuration, permissions, syntax, and metadata."
+    ]
+  },
+  {
+    "id": "tb-treatment-ukraine",
+    "category": "Applied Machine Learning & Statistics",
+    "title": "Assessing Risk Factors for Treatment Discontinuation in Tuberculosis Patients in Ukraine",
+    "subtitle": "",
+    "meta": "SIBS · With Brian Cai, Casey Crary, and Kelson McBride",
+    "paragraphs": [
+      "Analyzed tuberculosis treatment records from Ukraine (2018–2021) to investigate factors associated with patients discontinuing treatment.",
+      "Combined logistic regression and LASSO variable selection with decision trees and histogram-based gradient boosting to study socioeconomic and clinical risk factors and predict treatment dropout."
+    ]
+  },
+  {
+    "id": "stochastic-volatility",
+    "category": "Applied Machine Learning & Statistics",
+    "title": "Parameter Estimation for Stochastic Volatility Models",
+    "subtitle": "",
+    "meta": "MA 589 · With Daniel Keller, Matthew Levine, and Vignesh Somjit",
+    "paragraphs": [
+      "Studied latent volatility in S&P 500 returns, using a GARCH(1,1) model as a benchmark and estimating stochastic-volatility parameters with Gibbs sampling and Hamiltonian Monte Carlo.",
+      "Compared sampler diagnostics and explored an LSTM that incorporated estimated volatility into return prediction, highlighting the difficulty of estimating and using latent volatility reliably."
     ]
   },
   {
